@@ -1,0 +1,30 @@
+@import '@/assets/styles/myvariables.scss';
+
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-size: $font-size;
+	color: $text-color;
+	// height: 100vh;
+	// background-color: #0000001a;
+	// background-color: $mainBg;
+	// background: -moz-linear-gradient(top, #caced3 0%, #cbbfc1 50%, #a2acb5 100%);
+	// background: linear-gradient(to bottom, #caced3 0%, #cbbfc1 50%, #a2acb5 100%);
+	// filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#caced3', endColorstr='#a2acb5',GradientType=0 );
+	// background-attachment: fixed;
+	background-color: #f2f3ef;
+	background-image: url(@/assets/bg.png);
+	background-repeat: no-repeat;
+	background-position: left bottom;
+	background-attachment: fixed;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.q-chip__icon {
+	color: inherit;
+}
