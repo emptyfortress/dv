@@ -1,17 +1,12 @@
 <template lang="pug">
 .container
-	h4 Hello!
-	q-chip(v-for="chip in chips"
-	:key="chip.id"
-	v-model:selected="chip.selected")  {{ chip.label}}
+	Chips
+	Table
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
-import { tags } from '@/stores/tags'
-
-// const selected = ref([])
-const chips = reactive(tags)
+import Chips from '@/components/Chips.vue'
+import Table from '@/components/Table.vue'
 </script>
 
 <style scoped lang="scss">
@@ -22,13 +17,5 @@ const chips = reactive(tags)
 	height: 100px;
 	// background: #ccc;
 	margin-top: 2rem;
-}
-.q-chip {
-	max-width: 200px;
-	background: #d8d8ca;
-}
-.q-chip--selected {
-	background: $dark;
-	color: #fff;
 }
 </style>
