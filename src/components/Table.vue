@@ -30,14 +30,15 @@ q-table(title="Прототипы"
 	:columns="cols"
 	row-key="id"
 	binary-state-sort
+	wrap-cells
 	no-data-label="Здесь ничего нет"
 	no-results-label="Ничего не найдено"
+	:rows-per-page-options="[0]"
 	:filter="props.filter"
-	)
+	).sticky
 	template(v-slot:header="props")
 		q-tr(:props="props")
 			q-th(auto-width)
-			//- q-th(auto-width)
 			q-th(v-for="col in props.cols" :key="col.name" :props="props" ) {{ col.label }}
 			q-th(auto-width)
 
@@ -48,11 +49,11 @@ q-table(title="Прототипы"
 			q-td(key="name" :props="props") {{ props.row.name }}
 			q-td(key="client" :props="props") {{ props.row.client }}
 			q-td(key="field" :props="props") {{ props.row.field }}
-			q-td(key="date" :props="props")
-				q-icon(name="mdi-check-decagram" color="dark" size="xs").q-mr-sm
+			q-td(key="date" :props="props").text-no-wrap
+				q-icon(name="mdi-check-decagram" color="dark" size="xs" v-if="props.row.latest").q-mr-sm
 				span {{ props.row.date }}
 			q-td(key="descr" :props="props") {{ props.row.descr }}
-			q-td(auto-width)
+			q-td(auto-width).text-no-wrap
 				q-btn(round dense size="md" color="secondary" flat icon="mdi-eye" @click="openPic(props.row)")
 				a(:href="props.row.url" target="_blank")
 					q-btn(round dense size="md" color="secondary" flat icon="mdi-open-in-new")
@@ -62,21 +63,16 @@ q-table(title="Прототипы"
 				.row.align-start.justify-center.q-gutter-md
 					div(class="text-left") Варианты:
 					q-markup-table(flat)
-						q-tr
-							q-td name
-							q-td date
-							q-td descr
-							q-td action
-						q-tr
-							q-td name
-							q-td date
-							q-td descr
+						q-tr(v-for="item in props.row.child" :key="item.name")
+							q-td {{ item.name }}
+							q-td {{ item.date }}
+							q-td {{ item.descr }}
 							q-td action
 
 q-dialog(v-model="pic")
 	q-card.pic
 		q-btn(round icon="mdi-close" color="dark" v-close-popup).close
-		q-img(:src="`screenshots/${mystore.current.pic}.png`")
+		q-img(:src="`screenshots/${mystore.current.pic}.png`" no-transition)
 		q-card-section
 			.row.no-wrap.items-center
 				.col
@@ -90,15 +86,26 @@ q-dialog(v-model="pic")
 			q-card-actions(align="right")
 				q-btn(flat label="Закрыть" v-close-popup)
 				q-space
-				q-btn(outline round color="dark" icon="mdi-chevron-left")
+				q-btn(outline round color="dark" icon="mdi-chevron-left" @click="mystore.prevPreview")
 				q-btn(unelevated round color="dark" icon="mdi-open-in-new")
-				q-btn(outline round color="dark" icon="mdi-chevron-right")
+				q-btn(outline round color="dark" icon="mdi-chevron-right" @click="mystore.nextPreview")
 
 </template>
 
 <style scoped lang="scss">
 @import '@/assets/styles/myvariables.scss';
 
+.sticky {
+	height: 80vh;
+}
+thead tr th {
+	position: sticky;
+	z-index: 1;
+	background: #fff;
+}
+thead tr:first-child th {
+	top: 0;
+}
 .pic {
 	width: 800px;
 	max-width: 80vw;

@@ -29,6 +29,7 @@ interface Row {
 	field: string
 	descr: string
 	children: boolean
+	child?: Array
 	expand: boolean
 	latest: boolean
 	url: string
