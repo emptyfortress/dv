@@ -37,16 +37,21 @@ q-table(title="Прототипы"
 	template(v-slot:header="props")
 		q-tr(:props="props")
 			q-th(auto-width)
-			q-th(auto-width)
+			//- q-th(auto-width)
 			q-th(v-for="col in props.cols" :key="col.name" :props="props" ) {{ col.label }}
 			q-th(auto-width)
+
 	template(v-slot:body="props")
 		q-tr(:props="props")
 			q-td(auto-width)
 				q-btn(size="sm" color="accent" text-color="dark" unelevated round dense @click="props.expand = !props.expand" :icon="props.expand ? 'remove' : 'add' " v-if="props.row.children")
-			q-td(auto-width)
-				q-icon(name="mdi-check-decagram" color="dark" size="sm")
-			q-td(v-for="col in props.cols" :key="col.name" :props="props" ) {{ col.value }}
+			q-td(key="name" :props="props") {{ props.row.name }}
+			q-td(key="client" :props="props") {{ props.row.client }}
+			q-td(key="field" :props="props") {{ props.row.field }}
+			q-td(key="date" :props="props")
+				q-icon(name="mdi-check-decagram" color="dark" size="xs").q-mr-sm
+				span {{ props.row.date }}
+			q-td(key="descr" :props="props") {{ props.row.descr }}
 			q-td(auto-width)
 				q-btn(round dense size="md" color="secondary" flat icon="mdi-eye" @click="openPic(props.row)")
 				a(:href="props.row.url" target="_blank")

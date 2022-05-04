@@ -32,8 +32,8 @@ const rows = [
 		descr: 'Mercury OS inspired. Недоделан.',
 		url: 'https://amba-git-prior-emptyfortress.vercel.app/#/',
 		tags: [],
-		children: false,
-		latest: false,
+		children: true,
+		latest: true,
 		pic: 'mercury',
 	},
 	{ id: 1, date: format('22-11-19'), client: 'админка', field: '', descr: '' },
@@ -66,9 +66,10 @@ const cols: Column[] = [
 	{ id: 3, name: 'name', label: 'Название', field: 'name', align: 'left', sortable: true },
 	{ id: 1, name: 'client', label: 'Приложение', field: 'client', align: 'left', sortable: true },
 	{ id: 2, name: 'field', label: 'Раздел', field: 'field', align: 'left', sortable: true },
-	{ id: 0, name: 'date', label: 'Дата', field: 'date', align: 'left', sortable: true },
+	// { id: 3, name: 'latest', label: 'new', field: 'latest', align: 'left', sortable: true },
+	{ id: 0, name: 'date', label: 'Дата', field: 'date', align: 'right', sortable: true },
 	{ id: 4, name: 'descr', label: 'Примеч.', field: 'descr', align: 'left', sortable: false },
-	// { id: 5, name: 'actions', label: 'Actions', field: 'actions', align: 'left', sortable: false },
+	// { id: 5, name: 'actions', label: 'action', field: 'actions', align: 'right', sortable: false },
 ]
 
 export { tags, cols, rows }
