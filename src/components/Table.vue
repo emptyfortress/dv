@@ -1,6 +1,9 @@
 <script setup lang="ts">
-import { ref, watch, computed } from 'vue'
+import { ref } from 'vue'
 import { cols, rows } from '@/stores/data'
+import { useStore } from '@/stores/store'
+
+const mystore = useStore()
 
 const props = defineProps({
 	filter: {
@@ -10,6 +13,15 @@ const props = defineProps({
 })
 
 const pic = ref(false)
+
+const openPic = (e: Row) => {
+	pic.value = true
+	mystore.setCurrent(e)
+}
+
+const goto = (e: string) => {
+	console.log(e)
+}
 </script>
 
 <template lang="pug">
@@ -25,21 +37,31 @@ q-table(title="Прототипы"
 	template(v-slot:header="props")
 		q-tr(:props="props")
 			q-th(auto-width)
+			q-th(auto-width)
 			q-th(v-for="col in props.cols" :key="col.name" :props="props" ) {{ col.label }}
 			q-th(auto-width)
 	template(v-slot:body="props")
 		q-tr(:props="props")
 			q-td(auto-width)
-				q-btn(size="sm" color="accent" text-color="dark" unelevated round dense @click="props.expand = !props.expand" :icon="props.expand ? 'remove' : 'add'")
+				q-btn(size="sm" color="accent" text-color="dark" unelevated round dense @click="props.expand = !props.expand" :icon="props.expand ? 'remove' : 'add' " v-if="props.row.children")
+			q-td(auto-width)
+				q-icon(name="mdi-check-decagram" color="dark" size="sm")
 			q-td(v-for="col in props.cols" :key="col.name" :props="props" ) {{ col.value }}
 			q-td(auto-width)
-				q-btn(round dense size="md" color="secondary" flat icon="mdi-eye" @click="pic = true")
-				q-btn(round dense size="md" color="secondary" flat icon="mdi-open-in-new")
+				q-btn(round dense size="md" color="secondary" flat icon="mdi-eye" @click="openPic(props.row)")
+				a(:href="props.row.url" target="_blank")
+					q-btn(round dense size="md" color="secondary" flat icon="mdi-open-in-new")
+
 		q-tr(v-show="props.expand" :props="props")
 			q-td(colspan="100%").expand
 				.row.align-start.justify-center.q-gutter-md
-					div(class="text-left") Варианты прототипа:
+					div(class="text-left") Варианты:
 					q-markup-table(flat)
+						q-tr
+							q-td name
+							q-td date
+							q-td descr
+							q-td action
 						q-tr
 							q-td name
 							q-td date
@@ -49,16 +71,16 @@ q-table(title="Прототипы"
 q-dialog(v-model="pic")
 	q-card.pic
 		q-btn(round icon="mdi-close" color="dark" v-close-popup).close
-		q-img(src="https://cdn.quasar.dev/img/chicken-salad.jpg")
+		q-img(:src="`screenshots/${mystore.current.pic}.png`")
 		q-card-section
 			.row.no-wrap.items-center
 				.col
-					.text-overline this is date
-					.text-h6.ellipsis laksjl alskjlaksj
+					.text-overline {{ mystore.current.date }}
+					.text-h6.ellipsis {{ mystore.current.name }}
 				q-chip() web-client
 				q-chip() web-client
-		q-card-section
-			.descr Et, sollicitudin ac orci phasellus egestas tellus rutrum tellus pellentesque!
+		q-card-section.q-pt-none
+			.descr {{ mystore.current.descr }}
 		q-card-section
 			q-card-actions(align="right")
 				q-btn(flat label="Закрыть" v-close-popup)
@@ -88,5 +110,12 @@ q-dialog(v-model="pic")
 	background: $mainBg;
 	box-shadow: inset 0 0px 4px rgba(0, 0, 0, 0.3);
 	padding: 1rem 0;
+}
+a:link,
+a:visited {
+	text-decoration: none;
+}
+.descr {
+	font-size: 0.9rem;
 }
 </style>

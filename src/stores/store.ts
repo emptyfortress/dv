@@ -4,8 +4,13 @@ export const useStore = defineStore({
 	id: 'store',
 	state: () => ({
 		selection: 'fucker',
+		current: {} as Row,
 	}),
 	getters: {},
 
-	actions: {},
+	actions: {
+		setCurrent(payload: Row) {
+			this.current = payload
+		},
+	},
 })

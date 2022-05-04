@@ -23,8 +23,13 @@ interface Column {
 
 interface Row {
 	id: number
+	name: string
 	date: string
 	client: string
 	field: string
 	descr: string
+	children: boolean
+	latest: boolean
+	url: string
+	pic: string
 }
