@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { cols, rows } from '@/stores/data'
 import { useStore } from '@/stores/store'
+import Dialog from '@/components/Dialog.vue'
 
 const mystore = useStore()
 
@@ -18,9 +19,9 @@ const openPic = (e: Row) => {
 	pic.value = true
 	mystore.setCurrent(e)
 }
-
-const goto = (e: string) => {
-	console.log(e)
+const initialPagination = {
+	sortBy: 'id',
+	descending: true,
 }
 </script>
 
@@ -35,6 +36,7 @@ q-table(title="Прототипы"
 	no-results-label="Ничего не найдено"
 	:rows-per-page-options="[0]"
 	:filter="props.filter"
+	:pagination="initialPagination"
 	).sticky
 	template(v-slot:header="props")
 		q-tr(:props="props")
@@ -46,6 +48,7 @@ q-table(title="Прототипы"
 		q-tr(:props="props")
 			q-td(auto-width)
 				q-btn(size="sm" color="accent" text-color="dark" unelevated round dense @click="props.expand = !props.expand" :icon="props.expand ? 'remove' : 'add' " v-if="props.row.children")
+			q-td {{props.row.id}}
 			q-td(key="name" :props="props") {{ props.row.name }}
 			q-td(key="client" :props="props") {{ props.row.client }}
 			q-td(key="field" :props="props") {{ props.row.field }}
@@ -69,26 +72,7 @@ q-table(title="Прототипы"
 							q-td {{ item.descr }}
 							q-td action
 
-q-dialog(v-model="pic")
-	q-card.pic
-		q-btn(round icon="mdi-close" color="dark" v-close-popup).close
-		q-img(:src="`screenshots/${mystore.current.pic}.png`" no-transition)
-		q-card-section
-			.row.no-wrap.items-center
-				.col
-					.text-overline {{ mystore.current.date }}
-					.text-h6.ellipsis {{ mystore.current.name }}
-				q-chip() web-client
-				q-chip() web-client
-		q-card-section.q-pt-none
-			.descr {{ mystore.current.descr }}
-		q-card-section
-			q-card-actions(align="right")
-				q-btn(flat label="Закрыть" v-close-popup)
-				q-space
-				q-btn(outline round color="dark" icon="mdi-chevron-left" @click="mystore.prevPreview")
-				q-btn(unelevated round color="dark" icon="mdi-open-in-new")
-				q-btn(outline round color="dark" icon="mdi-chevron-right" @click="mystore.nextPreview")
+Dialog(:pic="pic" @close="pic = false")
 
 </template>
 
