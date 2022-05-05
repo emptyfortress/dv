@@ -4,9 +4,9 @@ import { rows } from '@/stores/data'
 export const useStore = defineStore({
 	id: 'store',
 	state: () => ({
-		selection: 'fucker',
 		rows: rows,
 		current: {} as Row,
+		chips: [] as string[],
 	}),
 	getters: {},
 
@@ -21,6 +21,9 @@ export const useStore = defineStore({
 		prevPreview() {
 			let index = rows.findIndex((e) => e.id === this.current.id)
 			this.current = rows[index - 1]
+		},
+		setChips(payload: string[]) {
+			this.chips = payload
 		},
 	},
 })

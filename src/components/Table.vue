@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { cols, rows } from '@/stores/data'
 import { useStore } from '@/stores/store'
 import Dialog from '@/components/Dialog.vue'
 
 const mystore = useStore()
 
-const props = defineProps({
-	filter: {
-		type: String,
-		default: '',
-	},
-})
+// const props defineProps({
+// 	filter: {
+// 		type: String,
+// 		default: '',
+// 	},
+// })
 
 const pic = ref(false)
 
@@ -23,11 +23,20 @@ const initialPagination = {
 	sortBy: 'date',
 	descending: true,
 }
+const filter = ref('')
+
+const myrows = ref(rows)
+const filtRow = computed(() => {
+	if (mystore.chips.length > 0) {
+		return myrows.value.filter((e: Row) => e.tags.includes(mystore.chips[0]))
+	}
+	return rows
+})
 </script>
 
 <template lang="pug">
 q-table(title="Прототипы"
-	:rows="rows"
+	:rows="filtRow"
 	:columns="cols"
 	row-key="id"
 	binary-state-sort
@@ -35,20 +44,24 @@ q-table(title="Прототипы"
 	no-data-label="Здесь ничего нет"
 	no-results-label="Ничего не найдено"
 	:rows-per-page-options="[0]"
-	:filter="props.filter"
+	:filter="filter"
 	:pagination="initialPagination"
 	).sticky
+
+	template(v-slot:top)
+		h6 Прототипы
+		q-space
+		q-input(borderless dense debounce="100" clearable color="primary" v-model="filter")
+			template(v-slot:prepend)
+				q-icon(name="mdi-magnify")
+
 	template(v-slot:header="props")
 		q-tr(:props="props")
-			q-th(auto-width)
 			q-th(v-for="col in props.cols" :key="col.name" :props="props" ) {{ col.label }}
 			q-th(auto-width)
 
 	template(v-slot:body="props")
 		q-tr(:props="props")
-			q-td(auto-width)
-				q-btn(size="sm" color="accent" text-color="dark" unelevated round dense @click="props.expand = !props.expand" :icon="props.expand ? 'remove' : 'add' " v-if="props.row.children")
-			//- q-td {{props.row.id}}
 			q-td(key="name" :props="props") {{ props.row.name }}
 			q-td(key="client" :props="props") {{ props.row.client }}
 			q-td(key="field" :props="props") {{ props.row.field }}
@@ -61,17 +74,6 @@ q-table(title="Прототипы"
 				a(:href="props.row.url" target="_blank")
 					q-btn(round dense size="md" color="secondary" flat icon="mdi-open-in-new")
 
-		q-tr(v-show="props.expand" :props="props")
-			q-td(colspan="100%").expand
-				.row.align-start.justify-center.q-gutter-md
-					div(class="text-left") Варианты:
-					q-markup-table(flat)
-						q-tr(v-for="item in props.row.child" :key="item.name")
-							q-td {{ item.name }}
-							q-td {{ item.date }}
-							q-td {{ item.descr }}
-							q-td action
-
 Dialog(:pic="pic" @close="pic = false")
 
 </template>
@@ -80,7 +82,7 @@ Dialog(:pic="pic" @close="pic = false")
 @import '@/assets/styles/myvariables.scss';
 
 .sticky {
-	height: 80vh;
+	max-height: 80vh;
 }
 thead tr th {
 	position: sticky;

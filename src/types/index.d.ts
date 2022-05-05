@@ -28,10 +28,8 @@ interface Row {
 	client: string
 	field: string
 	descr: string
-	children: boolean
-	child?: Array
-	expand: boolean
 	latest: boolean
 	url: string
 	pic: string
+	tags: string[]
 }

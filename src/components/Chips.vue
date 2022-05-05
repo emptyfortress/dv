@@ -1,30 +1,30 @@
 <template lang="pug">
-.row.align-center
-	q-space
-	q-input(v-model.trim="filter" dense clearable autofocus  @clear="filter = '' ")
-		template(v-slot:prepend)
-			q-icon(name="search")
-.text-center.q-mt-sm
-	q-chip(v-for="chip in filteredChips"
-	:key="chip.id"
-	v-model:selected="chip.selected").q-mb-md  {{ chip.label}}
+.row selection: {{ selection }}
+.row.align-start.justify-between.q-mb-md
+	div
+		q-chip(v-for="chip in chips" :key="chip.id" v-model:selected="chip.selected") {{ chip.label }}
+	div
+		q-chip(v-for="chop in chops" :key="chop.id" v-model:selected="chop.selected") {{ chop.label }}
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, computed } from 'vue'
-import { tags } from '@/stores/data'
+import { reactive, computed, watch } from 'vue'
+import { tags, tags1 } from '@/stores/data'
 import { useStore } from '@/stores/store'
 
 const mystore = useStore()
 
 const chips = reactive(tags)
-const filter = ref('')
+const chops = reactive(tags1)
 
-const filteredChips = computed(() => {
-	if (filter.value.length > 0) {
-		return chips.filter((e) => e.label.includes(filter.value))
+const selection = computed(() => {
+	return chips.filter((e) => e.selected).map((e) => e.label)
+})
+
+watch(selection, (value) => {
+	if (value) {
+		mystore.setChips(selection.value)
 	}
-	return chips
 })
 </script>
 
