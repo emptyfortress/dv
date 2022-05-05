@@ -1,7 +1,7 @@
 <template lang="pug">
 .row.align-center
 	q-space
-	q-input(v-model="filter" dense clearable autofocus  @clear="filter = '' ")
+	q-input(v-model.trim="filter" dense clearable autofocus  @clear="filter = '' ")
 		template(v-slot:prepend)
 			q-icon(name="search")
 .text-center.q-mt-sm

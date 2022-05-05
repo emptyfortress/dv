@@ -20,7 +20,7 @@ const openPic = (e: Row) => {
 	mystore.setCurrent(e)
 }
 const initialPagination = {
-	sortBy: 'id',
+	sortBy: 'date',
 	descending: true,
 }
 </script>
@@ -48,7 +48,7 @@ q-table(title="Прототипы"
 		q-tr(:props="props")
 			q-td(auto-width)
 				q-btn(size="sm" color="accent" text-color="dark" unelevated round dense @click="props.expand = !props.expand" :icon="props.expand ? 'remove' : 'add' " v-if="props.row.children")
-			q-td {{props.row.id}}
+			//- q-td {{props.row.id}}
 			q-td(key="name" :props="props") {{ props.row.name }}
 			q-td(key="client" :props="props") {{ props.row.client }}
 			q-td(key="field" :props="props") {{ props.row.field }}

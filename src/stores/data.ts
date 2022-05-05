@@ -8,7 +8,7 @@ const tags = [
 ]
 
 const cols: Column[] = [
-	{ id: 7, name: 'id', label: 'id', field: 'id', align: 'left', sortable: true },
+	// { id: 7, name: 'id', label: 'id', field: 'id', align: 'left', sortable: true },
 	{ id: 3, name: 'name', label: 'Название', field: 'name', align: 'left', sortable: true },
 	{ id: 1, name: 'client', label: 'Приложение', field: 'client', align: 'left', sortable: true },
 	{ id: 2, name: 'field', label: 'Раздел', field: 'field', align: 'left', sortable: true },
