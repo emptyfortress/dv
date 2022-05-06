@@ -17,7 +17,7 @@ q-dialog(v-model="props.pic")
 				q-space
 				q-btn(outline round color="dark" icon="mdi-chevron-left" @click="prev")
 				q-btn(unelevated round color="dark" icon="mdi-open-in-new")
-				q-btn(outline round color="dark" icon="mdi-chevron-right" @click="mystore.nextPreview")
+				q-btn(outline round color="dark" icon="mdi-chevron-right" @click="next")
 </template>
 
 <script setup lang="ts">
@@ -38,12 +38,8 @@ const close = () => {
 	emit('close')
 }
 
-// const compare = () => {
-// 	console.log(1)
-// }
 const test = () => {
-	console.log(props.rows)
-	console.log(items)
+	console.log(items.value)
 }
 
 const items = computed(() => {
@@ -65,7 +61,12 @@ const customSort = (rows: Row[], sortBy: keyof Row, descending: boolean) => {
 }
 
 const prev = () => {
-	const index = console.log(1)
+	const index = items.value.findIndex((e) => e.id === mystore.current.id)
+	mystore.setCurrent(items.value[index - 1])
+}
+const next = () => {
+	const index = items.value.findIndex((e) => e.id === mystore.current.id)
+	mystore.setCurrent(items.value[index + 1])
 }
 </script>
 

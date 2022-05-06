@@ -24,14 +24,11 @@ const openPic = (e: Row) => {
 const filter = ref('')
 
 const pagination = ref({
-	sortBy: 'date',
+	sortBy: 'date' as keyof Row,
 	descending: true,
 	page: 1,
 	rowsPerPage: 10,
 })
-const test = () => {
-	console.log(pagination.value.sortBy)
-}
 </script>
 
 <template lang="pug">
@@ -49,7 +46,7 @@ q-table(title="Прототипы"
 	).sticky
 
 	template(v-slot:top)
-		h6(@click="test") Прототипы
+		h6 Прототипы
 		q-space
 		q-input(dense debounce="100" clearable color="primary" v-model="filter").input
 			template(v-slot:prepend)

@@ -4,10 +4,8 @@ interface Chip {
 	selected: boolean
 }
 
-type Sort = 'id' | 'name' | 'label' | 'field' | 'date'
-
 interface Pagination {
-	sortBy: keyof typeof Sort
+	sortBy: keyof typeof Row
 	descending: boolean
 	page: number
 	rowsPerPage: number
