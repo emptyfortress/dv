@@ -24,15 +24,11 @@ q-dialog(v-model="props.pic")
 import { ref, computed } from 'vue'
 import { useStore } from '@/stores/store'
 
-// const props = defineProps({
-// 	pic: Boolean,
-// 	rows: [],
-// })
-
 const props = defineProps<{
 	rows: Row[]
 	pic: boolean
-	pagination: Pagination
+	sortBy: keyof Row
+	descending: boolean
 }>()
 
 const mystore = useStore()
@@ -47,28 +43,22 @@ const close = () => {
 // }
 const test = () => {
 	console.log(props.rows)
-	console.log(props.pagination)
 	console.log(items)
 }
 
 const items = computed(() => {
-	let temp = customSort(props.rows, props.pagination.sortBy, props.pagination.descending)
+	let temp = customSort(props.rows, props.sortBy, props.descending)
 	return temp
 })
 
-const customSort = (rows: Row[], sortBy: string, descending: boolean) => {
+const customSort = (rows: Row[], sortBy: keyof Row, descending: boolean) => {
 	const data = [...rows]
 
 	if (sortBy) {
 		data.sort((a: Row, b: Row): number => {
 			const x = descending ? b : a
 			const y = descending ? a : b
-
-			if (sortBy === 'date') {
-				// string sort
-				return x.date > y.date ? 1 : x.date < y.date ? -1 : 0
-			}
-			return 1
+			return x[sortBy] > y[sortBy] ? 1 : x[sortBy] < y[sortBy] ? -1 : 0
 		})
 	}
 	return data

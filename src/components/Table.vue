@@ -72,7 +72,7 @@ q-table(title="Прототипы"
 				a(:href="props.row.url" target="_blank")
 					q-btn(round dense size="md" color="secondary" flat icon="mdi-open-in-new")
 
-Dialog(:rows="props.rows" :pagination="pagination" :pic="pic" @close="pic = false")
+Dialog(:rows="props.rows" :sortBy="pagination.sortBy" :descending="pagination.descending" :pic="pic" @close="pic = false")
 
 </template>
 

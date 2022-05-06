@@ -408,7 +408,7 @@ const rows = [
 	},
 	{
 		id: 31,
-		name: 'dv backlog email',
+		name: 'DV backlog email',
 		date: '2021-10-21',
 		client: 'email',
 		field: 'письмо',
