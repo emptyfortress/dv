@@ -42,6 +42,7 @@ q-table(title="Прототипы"
 
 	template(v-slot:top)
 		h6 Прототипы
+			span.quant ({{rows.length}})
 		q-space
 		q-input(dense debounce="100" clearable color="primary" v-model="filter").input
 			template(v-slot:prepend)
@@ -60,6 +61,7 @@ q-table(title="Прототипы"
 			q-td(key="date") {{ props.row.date }}
 			q-td(key="descr") {{ props.row.descr }}
 			q-td(auto-width).btn
+				q-icon(name="mdi-check-decagram" color="dark" v-if="props.row.latest" size="sm").q-mr-sm
 				q-btn(round dense size="md" color="secondary" flat icon="mdi-eye" @click="openPic(props.row)")
 				a(:href="props.row.url" target="_blank")
 					q-btn(round dense size="md" color="secondary" flat icon="mdi-open-in-new")
@@ -107,11 +109,16 @@ a:visited {
 	font-size: 0.9rem;
 }
 .btn {
+	text-align: right;
 	white-space: nowrap;
 	// padding-right: 0;
 	padding-left: 0;
 }
 .input {
 	width: 200px;
+}
+.quant {
+	margin-left: 2rem;
+	font-size: 0.9rem;
 }
 </style>

@@ -1,7 +1,7 @@
 <template lang="pug">
 .container
 	Chips
-	Table(:columns="columns" :rows="filtRows")
+	Table(:columns="columns" :rows="filtRows1")
 </template>
 
 <script setup lang="ts">
@@ -23,6 +23,18 @@ const filtRows = computed(() => {
 		return unique
 	}
 	return rows
+})
+
+const filtRows1 = computed(() => {
+	if (mystore.chops.length > 0) {
+		const temp: any = []
+		mystore.chops.forEach((chop) => {
+			temp.push(...filtRows.value.filter((e: Row) => e.tugs.includes(chop)))
+		})
+		const unique = [...new Set(temp)] as Row[]
+		return unique
+	}
+	return filtRows.value
 })
 </script>
 

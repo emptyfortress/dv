@@ -5,6 +5,7 @@ export const useStore = defineStore({
 	state: () => ({
 		current: {} as Row,
 		chips: [] as string[],
+		chops: [] as string[],
 	}),
 	getters: {},
 
@@ -14,6 +15,9 @@ export const useStore = defineStore({
 		},
 		setChips(payload: string[]) {
 			this.chips = payload
+		},
+		setChops(payload: string[]) {
+			this.chops = payload
 		},
 	},
 })

@@ -1,5 +1,4 @@
 <template lang="pug">
-.row selection: {{ selection }}
 .row.align-start.justify-between.q-mb-md
 	div
 		q-chip(v-for="chip in chips" :key="chip.id" v-model:selected="chip.selected") {{ chip.label }}
@@ -24,6 +23,15 @@ const selection = computed(() => {
 watch(selection, (value) => {
 	if (value) {
 		mystore.setChips(selection.value)
+	}
+})
+
+const selection1 = computed(() => {
+	return chops.filter((e) => e.selected).map((e) => e.label)
+})
+watch(selection1, (value) => {
+	if (value) {
+		mystore.setChops(selection1.value)
 	}
 })
 </script>

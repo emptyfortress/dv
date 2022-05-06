@@ -39,4 +39,5 @@ interface Row {
 	url: string
 	pic: string
 	tags: string[]
+	tugs: string[]
 }
