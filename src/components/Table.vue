@@ -6,7 +6,7 @@ import { useStore } from '@/stores/store'
 const mystore = useStore()
 
 const props = defineProps<{
-	columns: Column[]
+	columns: any
 	rows: Row[]
 }>()
 
@@ -16,11 +16,6 @@ const openPic = (e: Row) => {
 	pic.value = true
 	mystore.setCurrent(e)
 }
-// const initialPagination = {
-// 	sortBy: 'date',
-// 	descending: true,
-// 	rowsPerPage: 10,
-// }
 const filter = ref('')
 
 const pagination = ref({

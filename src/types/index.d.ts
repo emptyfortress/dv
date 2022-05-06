@@ -16,7 +16,6 @@ interface Column {
 	name: string
 	label: string
 	field: string | ((row: any) => any)
-	date: string
 	required?: boolean
 	align?: 'left' | 'right' | 'center'
 	sortable?: boolean
