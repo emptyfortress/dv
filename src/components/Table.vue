@@ -1,17 +1,14 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
-import { cols, rows } from '@/stores/data'
-import { useStore } from '@/stores/store'
+import { ref } from 'vue'
 import Dialog from '@/components/Dialog.vue'
+import { useStore } from '@/stores/store'
 
 const mystore = useStore()
 
-// const props defineProps({
-// 	filter: {
-// 		type: String,
-// 		default: '',
-// 	},
-// })
+const props = defineProps<{
+	columns: Column[]
+	rows: Row[]
+}>()
 
 const pic = ref(false)
 
@@ -19,45 +16,49 @@ const openPic = (e: Row) => {
 	pic.value = true
 	mystore.setCurrent(e)
 }
-const initialPagination = {
-	sortBy: 'date',
-	descending: true,
-}
+// const initialPagination = {
+// 	sortBy: 'date',
+// 	descending: true,
+// 	rowsPerPage: 10,
+// }
 const filter = ref('')
 
-const myrows = ref(rows)
-const filtRow = computed(() => {
-	if (mystore.chips.length > 0) {
-		return myrows.value.filter((e: Row) => e.tags.includes(mystore.chips[0]))
-	}
-	return rows
+const pagination = ref({
+	sortBy: 'date',
+	descending: true,
+	page: 1,
+	rowsPerPage: 10,
 })
+const test = () => {
+	console.log(pagination.value.sortBy)
+}
 </script>
 
 <template lang="pug">
 q-table(title="Прототипы"
-	:rows="filtRow"
-	:columns="cols"
+	:rows="props.rows"
+	:columns="props.columns"
 	row-key="id"
 	binary-state-sort
 	wrap-cells
 	no-data-label="Здесь ничего нет"
 	no-results-label="Ничего не найдено"
+	rows-per-page-label="Записей на стр.:"
 	:filter="filter"
-	:pagination="initialPagination"
+	v-model:pagination="pagination"
 	).sticky
 
 	template(v-slot:top)
-		h6 Прототипы
+		h6(@click="test") Прототипы
 		q-space
-		q-input(borderless dense debounce="100" clearable color="primary" v-model="filter")
+		q-input(dense debounce="100" clearable color="primary" v-model="filter").input
 			template(v-slot:prepend)
 				q-icon(name="mdi-magnify")
 
 	template(v-slot:header="props")
 		q-tr(:props="props")
 			q-th(v-for="col in props.cols" :key="col.name" :props="props" ) {{ col.label }}
-			//- q-th(auto-width)
+			q-th
 
 	template(v-slot:body="props")
 		q-tr(:props="props").rel
@@ -65,23 +66,13 @@ q-table(title="Прототипы"
 			q-td(key="client") {{ props.row.client }}
 			q-td(key="field") {{ props.row.field }}
 			q-td(key="date") {{ props.row.date }}
+			q-td(key="descr") {{ props.row.descr }}
+			q-td(auto-width).btn
+				q-btn(round dense size="md" color="secondary" flat icon="mdi-eye" @click="openPic(props.row)")
+				a(:href="props.row.url" target="_blank")
+					q-btn(round dense size="md" color="secondary" flat icon="mdi-open-in-new")
 
-
-	//- template(v-slot:body="props")
-	//- 	q-tr(:props="props")
-	//- 		q-td(key="name" :props="props") {{ props.row.name }}
-	//- 		q-td(key="client" :props="props") {{ props.row.client }}
-	//- 		q-td(key="field" :props="props") {{ props.row.field }}
-	//- 		q-td(key="date" :props="props").text-no-wrap
-	//- 			q-icon(name="mdi-check-decagram" color="dark" size="xs" v-if="props.row.latest").q-mr-sm
-	//- 			span {{ props.row.date }}
-	//- 		q-td(key="descr" :props="props") {{ props.row.descr }}
-	//- 		q-td(auto-width).text-no-wrap
-	//- 			q-btn(round dense size="md" color="secondary" flat icon="mdi-eye" @click="openPic(props.row)")
-	//- 			a(:href="props.row.url" target="_blank")
-	//- 				q-btn(round dense size="md" color="secondary" flat icon="mdi-open-in-new")
-
-Dialog(:pic="pic" @close="pic = false")
+Dialog(:rows="props.rows" :pagination="pagination" :pic="pic" @close="pic = false")
 
 </template>
 
@@ -122,5 +113,13 @@ a:visited {
 }
 .descr {
 	font-size: 0.9rem;
+}
+.btn {
+	white-space: nowrap;
+	// padding-right: 0;
+	padding-left: 0;
+}
+.input {
+	width: 200px;
 }
 </style>

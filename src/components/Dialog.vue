@@ -10,31 +10,72 @@ q-dialog(v-model="props.pic")
 					.text-h6.ellipsis {{ mystore.current.name }}
 				q-chip(color="dark" text-color="white") web-client
 		q-card-section.q-pt-none
-			.descr {{ mystore.current.descr }}
+			.descr(@click="test") {{ mystore.current.descr }}
 		q-card-section
 			q-card-actions(align="right")
 				q-btn(flat label="Закрыть" @click="close")
 				q-space
-				q-btn(outline round color="dark" icon="mdi-chevron-left" @click="mystore.prevPreview")
+				q-btn(outline round color="dark" icon="mdi-chevron-left" @click="prev")
 				q-btn(unelevated round color="dark" icon="mdi-open-in-new")
 				q-btn(outline round color="dark" icon="mdi-chevron-right" @click="mystore.nextPreview")
 </template>
 
 <script setup lang="ts">
+import { ref, computed } from 'vue'
 import { useStore } from '@/stores/store'
 
-const props = defineProps({
-	pic: {
-		type: Boolean,
-		default: false,
-	},
-})
+// const props = defineProps({
+// 	pic: Boolean,
+// 	rows: [],
+// })
+
+const props = defineProps<{
+	rows: Row[]
+	pic: boolean
+	pagination: Pagination
+}>()
 
 const mystore = useStore()
 
 const emit = defineEmits(['close'])
 const close = () => {
 	emit('close')
+}
+
+// const compare = () => {
+// 	console.log(1)
+// }
+const test = () => {
+	console.log(props.rows)
+	console.log(props.pagination)
+	console.log(items)
+}
+
+const items = computed(() => {
+	let temp = customSort(props.rows, props.pagination.sortBy, props.pagination.descending)
+	return temp
+})
+
+const customSort = (rows: Row[], sortBy: string, descending: boolean) => {
+	const data = [...rows]
+
+	if (sortBy) {
+		data.sort((a: Row, b: Row): number => {
+			const x = descending ? b : a
+			const y = descending ? a : b
+
+			if (sortBy === 'date') {
+				// string sort
+				return x.date > y.date ? 1 : x.date < y.date ? -1 : 0
+			}
+			return 1
+		})
+	}
+	return data
+}
+
+const prev = () => {
+	const index = console.log(1)
 }
 </script>
 

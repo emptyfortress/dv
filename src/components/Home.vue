@@ -1,12 +1,13 @@
 <template lang="pug">
 .container
 	Chips
-	Table
+	Table(:columns="cols" :rows="rows")
 </template>
 
 <script setup lang="ts">
 import Chips from '@/components/Chips.vue'
 import Table from '@/components/Table.vue'
+import { cols, rows } from '@/stores/data'
 </script>
 
 <style scoped lang="scss">

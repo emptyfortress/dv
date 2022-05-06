@@ -4,6 +4,13 @@ interface Chip {
 	selected: boolean
 }
 
+interface Pagination {
+	sortBy: string
+	descending: boolean
+	page: number
+	rowsPerPage: number
+}
+
 interface Column {
 	id: number
 	name: string

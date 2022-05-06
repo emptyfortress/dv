@@ -14,7 +14,7 @@ const tags1 = [
 	{ id: 5, selected: false, label: 'dashboard' },
 ]
 
-const cols: Column[] = [
+const cols = [
 	// { id: 7, name: 'id', label: 'id', field: 'id', align: 'left', sortable: true },
 	{ id: 3, name: 'name', label: 'Название', field: 'name', align: 'left', sortable: true },
 	{ id: 1, name: 'client', label: 'Приложение', field: 'client', align: 'left', sortable: true },
