@@ -63,10 +63,16 @@ const customSort = (rows: Row[], sortBy: keyof Row, descending: boolean) => {
 
 const prev = () => {
 	const index = items.value.findIndex((e) => e.id === mystore.current.id)
+	if (index === 0) {
+		return
+	}
 	mystore.setCurrent(items.value[index - 1])
 }
 const next = () => {
 	const index = items.value.findIndex((e) => e.id === mystore.current.id)
+	if (index === items.value.length - 1) {
+		return
+	}
 	mystore.setCurrent(items.value[index + 1])
 }
 </script>
