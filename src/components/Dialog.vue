@@ -2,7 +2,16 @@
 q-dialog(v-model="props.pic")
 	q-card.pic
 		q-btn(round icon="mdi-close" color="dark" @click="close").close
-		q-img(:src="`screenshots/${mystore.current.pic}.png`" no-transition).img
+		.ic
+			q-img(:src="`screenshots/${mystore.current.pic}.png`" no-transition position="0 0" fit="cover").img
+			.flex
+				.left(@click="prev")
+					q-icon(name="mdi-chevron-left" size="10rem" color="white")
+				.center
+					a(:href="mystore.current.url" target="_blank")
+						q-icon(name="mdi-open-in-new" size="8rem" color="white")
+				.right(@click="next")
+					q-icon(name="mdi-chevron-right" size="10rem" color="white" )
 		q-card-section
 			.row.no-wrap.items-center
 				.col
@@ -12,17 +21,6 @@ q-dialog(v-model="props.pic")
 				q-chip(v-for="chip in mystore.current.tugs" :key="chip" color="dark" text-color="white") {{ chip }}
 		q-card-section.q-pt-none
 			.descr {{ mystore.current.descr }}
-		q-card-section
-			q-card-actions(align="right")
-				q-btn(flat label="Закрыть" @click="close")
-				q-space
-				q-btn(outline round color="dark" icon="mdi-chevron-left" @click="prev")
-					q-tooltip(:delay="500" anchor="top middle" self="bottom middle") Предыдущий
-				a(:href="mystore.current.url" target="_blank").q-mx-xs
-					q-btn(unelevated round color="dark" icon="mdi-open-in-new")
-						q-tooltip(:delay="500" anchor="top middle" self="bottom middle") Открыть
-				q-btn(outline round color="dark" icon="mdi-chevron-right" @click="next")
-					q-tooltip(:delay="500" anchor="top middle" self="bottom middle") Следующий
 </template>
 
 <script setup lang="ts">
@@ -81,8 +79,9 @@ const next = () => {
 @import '@/assets/styles/myvariables.scss';
 
 .pic {
-	width: 800px;
-	max-width: 80vw;
+	// width: 800px;
+	min-width: 860px;
+	height: 80vh;
 	position: relative;
 	overflow: visible;
 	background: $mainBg;
