@@ -62,9 +62,12 @@ q-table(title="Прототипы"
 			q-td(key="descr") {{ props.row.descr }}
 			q-td(auto-width).btn
 				q-icon(name="mdi-check-decagram" color="dark" v-if="props.row.latest" size="sm").q-mr-sm
+					q-tooltip(:delay="500" anchor="top middle" self="bottom middle") Текущая версия
 				q-btn(round dense size="md" color="secondary" flat icon="mdi-eye" @click="openPic(props.row)")
+					q-tooltip(:delay="500" anchor="top middle" self="bottom middle") Превью
 				a(:href="props.row.url" target="_blank")
 					q-btn(round dense size="md" color="secondary" flat icon="mdi-open-in-new")
+						q-tooltip(:delay="500" anchor="top middle" self="bottom middle") Открыть
 
 Dialog(:rows="props.rows" :sortBy="pagination.sortBy" :descending="pagination.descending" :pic="pic" @close="pic = false")
 

@@ -8,16 +8,21 @@ q-dialog(v-model="props.pic")
 				.col
 					.text-overline {{ mystore.current.date }}
 					.text-h6.ellipsis {{ mystore.current.name }}
-				q-chip(color="dark" text-color="white") web-client
+				q-chip(v-for="chip in mystore.current.tags" :key="chip" color="dark" text-color="white") {{ chip }}
+				q-chip(v-for="chip in mystore.current.tugs" :key="chip" color="dark" text-color="white") {{ chip }}
 		q-card-section.q-pt-none
-			.descr(@click="test") {{ mystore.current.descr }}
+			.descr {{ mystore.current.descr }}
 		q-card-section
 			q-card-actions(align="right")
 				q-btn(flat label="Закрыть" @click="close")
 				q-space
 				q-btn(outline round color="dark" icon="mdi-chevron-left" @click="prev")
-				q-btn(unelevated round color="dark" icon="mdi-open-in-new")
+					q-tooltip(:delay="500" anchor="top middle" self="bottom middle") Предыдущий
+				a(:href="mystore.current.url" target="_blank").q-mx-xs
+					q-btn(unelevated round color="dark" icon="mdi-open-in-new")
+						q-tooltip(:delay="500" anchor="top middle" self="bottom middle") Открыть
 				q-btn(outline round color="dark" icon="mdi-chevron-right" @click="next")
+					q-tooltip(:delay="500" anchor="top middle" self="bottom middle") Следующий
 </template>
 
 <script setup lang="ts">
@@ -36,10 +41,6 @@ const mystore = useStore()
 const emit = defineEmits(['close'])
 const close = () => {
 	emit('close')
-}
-
-const test = () => {
-	console.log(items.value)
 }
 
 const items = computed(() => {
