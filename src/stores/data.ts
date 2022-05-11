@@ -525,7 +525,7 @@ const rows = [
 		date: '2022-04-04',
 		client: 'web-client',
 		field: 'дашборд',
-		descr: 'Apexchart на дашборде',
+		descr: 'Графики на дашборде. Apexchart on dashboard',
 		url: 'https://base-git-dashboard-emptyfortress.vercel.app/#/dashboard',
 		tags: ['web-client'],
 		tugs: ['dashboard'],
