@@ -22,7 +22,7 @@ const pagination = ref({
 	sortBy: 'date' as keyof Row,
 	descending: true,
 	page: 1,
-	rowsPerPage: 10,
+	rowsPerPage: 12,
 })
 </script>
 
@@ -79,10 +79,18 @@ Dialog(:rows="props.rows" :sortBy="pagination.sortBy" :descending="pagination.de
 .sticky {
 	max-height: 80vh;
 }
+thead tr {
+	height: 32px;
+}
 thead tr th {
 	position: sticky;
 	z-index: 1;
-	background: #fff;
+	background: #e9e9e2;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+thead tr th:not(:last-child) {
+	border-right: 1px solid #fff;
 }
 thead tr:first-child th {
 	top: 0;
