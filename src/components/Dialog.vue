@@ -1,27 +1,26 @@
 <template lang="pug">
-q-dialog(v-model="props.pic")
-	q-card.pic
-		q-btn(round icon="mdi-close" color="dark" @click="close").close
-		.ic
-			q-img(:src="`screenshots/${mystore.current.pic}.png`" no-transition position="0 0" fit="cover").img
-			.flex
-				.left(@click="prev")
-					q-icon(name="mdi-chevron-left" size="10rem" color="black")
-				.center
-					a(:href="mystore.current.url" target="_blank")
-						q-icon(name="mdi-open-in-new" size="8rem" color="black")
-				.right(@click="next")
-					q-icon(name="mdi-chevron-right" size="10rem" color="black" )
-		q-card-section
-			.row.no-wrap.items-center
-				.col
-					.text-overline {{ mystore.current.date }}
-					.text-h6.ellipsis {{ mystore.current.name }}
-				q-icon(name="mdi-check-decagram" color="dark" v-if="mystore.current.latest" size="md").q-mr-sm
-				q-chip(v-for="chip in mystore.current.tags" :key="chip" color="dark" text-color="white") {{ chip }}
-				q-chip(v-for="chip in mystore.current.tugs" :key="chip" color="dark" text-color="white") {{ chip }}
-		q-card-section.q-pt-none
-			.descr {{ mystore.current.descr }}
+q-card.pic
+	q-btn(round icon="mdi-close" color="dark" @click="close").close
+	.ic
+		q-img(:src="`screenshots/${mystore.current.pic}.png`" no-transition position="0 0" fit="cover").img
+		.flex
+			.left(@click="prev")
+				q-icon(name="mdi-chevron-left" size="10rem" color="black")
+			.center
+				a(:href="mystore.current.url" target="_blank")
+					q-icon(name="mdi-open-in-new" size="8rem" color="black")
+			.right(@click="next")
+				q-icon(name="mdi-chevron-right" size="10rem" color="black" )
+	q-card-section
+		.row.no-wrap.items-center
+			.col
+				.text-overline {{ mystore.current.date }}
+				.text-h6.ellipsis {{ mystore.current.name }}
+			q-icon(name="mdi-check-decagram" color="dark" v-if="mystore.current.latest" size="md").q-mr-sm
+			q-chip(v-for="chip in mystore.current.tags" :key="chip" color="dark" text-color="white") {{ chip }}
+			q-chip(v-for="chip in mystore.current.tugs" :key="chip" color="dark" text-color="white") {{ chip }}
+	q-card-section.q-pt-none
+		.descr {{ mystore.current.descr }}
 </template>
 
 <script setup lang="ts">
