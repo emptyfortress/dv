@@ -54,7 +54,7 @@ q-table(title="Прототипы"
 			q-th
 
 	template(v-slot:body="props")
-		q-tr(:props="props").rel
+		q-tr(:props="props" @click="openPic(props.row)").rel
 			q-td(key="name") {{ props.row.name }}
 			q-td(key="client") {{ props.row.client }}
 			q-td(key="field") {{ props.row.field }}
@@ -63,9 +63,7 @@ q-table(title="Прототипы"
 			q-td(auto-width).btn
 				q-icon(name="mdi-check-decagram" color="dark" v-if="props.row.latest" size="sm").q-mr-sm
 					q-tooltip(:delay="500" anchor="top middle" self="bottom middle") Текущая версия
-				q-btn(round dense size="md" color="secondary" flat icon="mdi-eye" @click="openPic(props.row)")
-					q-tooltip(:delay="500" anchor="top middle" self="bottom middle") Превью
-				a(:href="props.row.url" target="_blank")
+				a(:href="props.row.url" target="_blank" @click.stop)
 					q-btn(round dense size="md" color="secondary" flat icon="mdi-open-in-new")
 						q-tooltip(:delay="500" anchor="top middle" self="bottom middle") Открыть
 
@@ -78,6 +76,9 @@ Dialog(:rows="props.rows" :sortBy="pagination.sortBy" :descending="pagination.de
 
 .sticky {
 	max-height: 80vh;
+	tr {
+		cursor: pointer;
+	}
 }
 thead tr {
 	height: 32px;
