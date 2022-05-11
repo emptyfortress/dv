@@ -13,7 +13,6 @@
     "allowJs": true,
     "downlevelIteration": true,
     "baseUrl": ".",
-    "types": ["vite-plugin-svg-icons/client"],
     "paths": {
       "@/*": [ // / to begin with.
         "src/*"
