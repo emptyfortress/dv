@@ -91,8 +91,47 @@ const next = () => {
 		right: -1.2rem;
 		z-index: 2;
 	}
+	.img {
+		box-shadow: 0 5px 8px 2px rgba(0, 0, 0, 0.4);
+		height: calc(80vh - 140px);
+		object-position: left top;
+	}
 }
-.img {
-	box-shadow: 0 5px 8px 2px rgba(0, 0, 0, 0.4);
+.ic {
+	position: relative;
+	.flex {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		gap: 1px;
+		justify-content: space-between;
+		> div {
+			background: #0000002a;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+			display: flex;
+			opacity: 0;
+			&:hover {
+				opacity: 1;
+				backdrop-filter: blur(7px);
+				-webkit-backdrop-filter: blur(7px);
+			}
+		}
+		.left,
+		.right {
+			width: 24%;
+		}
+		.center {
+			width: 50%;
+			a {
+				display: block;
+				text-decoration: none;
+			}
+		}
+	}
 }
 </style>
