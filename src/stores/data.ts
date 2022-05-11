@@ -486,7 +486,7 @@ const rows = [
 		date: '2022-01-31',
 		client: 'web-client',
 		field: 'грид',
-		descr: 'Ресайз колонок',
+		descr: 'Ресайз колонок, column resize',
 		url: 'https://base-git-grid1-emptyfortress.vercel.app/#/grid',
 		tags: ['web-client'],
 		tugs: ['грид'],
