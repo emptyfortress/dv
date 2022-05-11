@@ -17,6 +17,7 @@ q-dialog(v-model="props.pic")
 				.col
 					.text-overline {{ mystore.current.date }}
 					.text-h6.ellipsis {{ mystore.current.name }}
+				q-icon(name="mdi-check-decagram" color="dark" v-if="mystore.current.latest" size="md").q-mr-sm
 				q-chip(v-for="chip in mystore.current.tags" :key="chip" color="dark" text-color="white") {{ chip }}
 				q-chip(v-for="chip in mystore.current.tugs" :key="chip" color="dark" text-color="white") {{ chip }}
 		q-card-section.q-pt-none
