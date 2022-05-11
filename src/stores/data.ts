@@ -558,6 +558,32 @@ const rows = [
 		latest: false,
 		pic: 'youtube',
 	},
+	{
+		id: 41,
+		name: 'Акт сдачи-приемки для xslt',
+		date: '2022-04-19',
+		client: 'web-client',
+		field: 'другое',
+		descr: 'Диадок форма акта сдачи-приемки для превью через xslt',
+		url: 'https://diadok-form.vercel.app/',
+		tags: ['web-client', 'другое'],
+		tugs: [],
+		latest: false,
+		pic: 'diadok',
+	},
+	{
+		id: 42,
+		name: 'Логин через партнеров',
+		date: '2022-04-10',
+		client: 'web-client',
+		field: 'другое',
+		descr: 'Авторизация через сторонние сервисы: google, fb, vk...',
+		url: 'https://login-ten-weld.vercel.app/#/success',
+		tags: ['web-client', 'другое'],
+		tugs: [],
+		latest: false,
+		pic: 'login',
+	},
 ]
 
 export { tags, tags1, columns, rows }
