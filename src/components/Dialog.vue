@@ -6,12 +6,12 @@ q-dialog(v-model="props.pic")
 			q-img(:src="`screenshots/${mystore.current.pic}.png`" no-transition position="0 0" fit="cover").img
 			.flex
 				.left(@click="prev")
-					q-icon(name="mdi-chevron-left" size="10rem" color="white")
+					q-icon(name="mdi-chevron-left" size="10rem" color="black")
 				.center
 					a(:href="mystore.current.url" target="_blank")
-						q-icon(name="mdi-open-in-new" size="8rem" color="white")
+						q-icon(name="mdi-open-in-new" size="8rem" color="black")
 				.right(@click="next")
-					q-icon(name="mdi-chevron-right" size="10rem" color="white" )
+					q-icon(name="mdi-chevron-right" size="10rem" color="black" )
 		q-card-section
 			.row.no-wrap.items-center
 				.col
@@ -118,8 +118,8 @@ const next = () => {
 			opacity: 0;
 			&:hover {
 				opacity: 1;
-				backdrop-filter: blur(7px);
-				-webkit-backdrop-filter: blur(7px);
+				backdrop-filter: blur(4px);
+				-webkit-backdrop-filter: blur(4px);
 			}
 		}
 		.left,
