@@ -584,6 +584,19 @@ const rows = [
 		latest: false,
 		pic: 'login',
 	},
+	{
+		id: 43,
+		name: 'Дашборд для Гознака',
+		date: '2021-02-08',
+		client: 'web-client',
+		field: 'dashboard',
+		descr: 'Страничка для гознака в виде дашборда',
+		url: 'https://dash-sigma.vercel.app/',
+		tags: ['web-client'],
+		tugs: ['dashboard'],
+		latest: false,
+		pic: 'goznak',
+	},
 ]
 
 export { tags, tags1, columns, rows }
