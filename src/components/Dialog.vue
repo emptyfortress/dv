@@ -32,6 +32,7 @@ const props = defineProps<{
 	pic: boolean
 	sortBy: keyof Row
 	descending: boolean
+	filter: string
 }>()
 
 const mystore = useStore()
@@ -41,8 +42,20 @@ const close = () => {
 	emit('close')
 }
 
+const filteredRows = computed(() => {
+	if (props.filter == '') {
+		return props.rows
+	} else {
+		return props.rows.filter(
+			(item) =>
+				item.descr.toLowerCase().includes(props.filter.toLowerCase()) ||
+				item.name.toLowerCase().includes(props.filter.toLowerCase())
+		)
+	}
+})
+
 const items = computed(() => {
-	let temp = customSort(props.rows, props.sortBy, props.descending)
+	let temp = customSort(filteredRows.value, props.sortBy, props.descending)
 	return temp
 })
 

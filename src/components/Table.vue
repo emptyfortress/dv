@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import Dialog from '@/components/Dialog.vue'
 import { useStore } from '@/stores/store'
 
@@ -17,6 +17,9 @@ const openPic = (e: Row) => {
 	mystore.setCurrent(e)
 }
 const filter = ref('')
+const clearFilter = () => {
+	filter.value = ''
+}
 
 const pagination = ref({
 	sortBy: 'date' as keyof Row,
@@ -44,7 +47,7 @@ q-table(title="Прототипы"
 		h6 Прототипы
 			span.quant ({{rows.length}})
 		q-space
-		q-input(dense debounce="100" clearable color="primary" v-model="filter").input
+		q-input(dense debounce="100" clearable color="primary" v-model="filter" @clear="clearFilter").input
 			template(v-slot:prepend)
 				q-icon(name="mdi-magnify")
 
@@ -68,7 +71,7 @@ q-table(title="Прототипы"
 						q-tooltip(:delay="500" anchor="top middle" self="bottom middle") Открыть
 
 q-dialog(v-model="pic")
-	Dialog(:rows="props.rows" :sortBy="pagination.sortBy" :descending="pagination.descending" :pic="pic" @close="pic = false")
+	Dialog(:rows="props.rows" :filter="filter" :sortBy="pagination.sortBy" :descending="pagination.descending" :pic="pic" @close="pic = false")
 
 
 </template>
