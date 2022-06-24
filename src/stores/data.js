@@ -628,7 +628,7 @@ const rows = [
 		name: 'Маршрут согласования - настройка',
 		date: '2022-06-24',
 		client: 'web-client',
-		field: 'контрол',
+		field: 'ход согласования',
 		descr: 'Настройка маршрута согласования (визуализация) vis.js',
 		url: 'https://ksnew-emptyfortress.vercel.app/#/card',
 		tags: ['web-client'],
