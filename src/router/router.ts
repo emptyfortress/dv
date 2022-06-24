@@ -18,7 +18,7 @@ export const router = createRouter({
 		{
 			path: '/',
 			component: Home,
-			meta: { transition: 'slide-left', title: 'DV protoypes', requiresAuth: false },
+			meta: { transition: 'slide-left', title: 'DV prototypes', requiresAuth: false },
 		},
 	],
 })

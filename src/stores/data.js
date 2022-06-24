@@ -623,6 +623,19 @@ const rows = [
 		latest: false,
 		pic: 'mybuttons',
 	},
+	{
+		id: 46,
+		name: 'Маршрут согласования - настройка',
+		date: '2022-06-24',
+		client: 'web-client',
+		field: 'контрол',
+		descr: 'Настройка маршрута согласования (визуализация) vis.js',
+		url: 'https://ksnew-emptyfortress.vercel.app/#/card',
+		tags: ['web-client'],
+		tugs: ['контрол'],
+		latest: true,
+		pic: 'marshrut',
+	},
 ]
 
 export { tags, tags1, columns, rows }
