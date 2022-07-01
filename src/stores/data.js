@@ -14,6 +14,7 @@ const tags1 = [
 	{ id: 6, selected: false, label: 'mobile' },
 	{ id: 7, selected: false, label: 'storybook' },
 	{ id: 8, selected: false, label: 'dashboard' },
+	{ id: 9, selected: false, label: 'тп' },
 ]
 
 const columns = [
@@ -635,6 +636,19 @@ const rows = [
 		tugs: ['контрол'],
 		latest: true,
 		pic: 'marshrut',
+	},
+	{
+		id: 47,
+		name: 'Сайт ТП (техподдержка)',
+		date: '2018-07-13',
+		client: 'тп',
+		field: 'сайт',
+		descr: 'Новый вид сайта техподдержки',
+		url: 'https://support-emptyfortress.vercel.app/',
+		tags: ['концепт'],
+		tugs: ['тп'],
+		latest: false,
+		pic: 'support',
 	},
 ]
 
