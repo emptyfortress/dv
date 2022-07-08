@@ -15,6 +15,7 @@ const tags1 = [
 	{ id: 7, selected: false, label: 'storybook' },
 	{ id: 8, selected: false, label: 'dashboard' },
 	{ id: 9, selected: false, label: 'тп' },
+	{ id: 10, selected: false, label: 'сервис' },
 ]
 
 const columns = [
@@ -464,7 +465,7 @@ const rows = [
 		descr: 'Настройка представлений для поиска',
 		url: 'https://base-git-poisk-emptyfortress.vercel.app/#/search',
 		tags: ['web-client'],
-		tugs: ['контрол'],
+		tugs: ['контрол', 'сервис'],
 		latest: false,
 		pic: 'basesearch',
 	},
@@ -649,6 +650,19 @@ const rows = [
 		tugs: ['тп'],
 		latest: false,
 		pic: 'support',
+	},
+	{
+		id: 48,
+		name: 'Сервис активации Docsvision',
+		date: '2021-09-17',
+		client: 'другое',
+		field: 'сервис',
+		descr: 'Сервис активации',
+		url: 'https://editor-git-activation-emptyfortress.vercel.app/#/activation',
+		tags: ['другое'],
+		tugs: ['сервис'],
+		latest: false,
+		pic: 'activation',
 	},
 ]
 

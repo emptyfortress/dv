@@ -2,7 +2,7 @@
 .row.align-start.justify-between.q-mb-md
 	div
 		q-chip(v-for="chip in chips" :key="chip.id" v-model:selected="chip.selected") {{ chip.label }}
-	div
+	.wrap
 		q-chip(v-for="chop in chops" :key="chop.id" v-model:selected="chop.selected") {{ chop.label }}
 </template>
 
@@ -48,5 +48,10 @@ watch(selection1, (value) => {
 }
 .q-input {
 	width: 250px;
+}
+.wrap {
+	max-width: 60%;
+	align-self: flex-end;
+	text-align: right;
 }
 </style>
