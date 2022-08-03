@@ -664,6 +664,19 @@ const rows = [
 		latest: false,
 		pic: 'activation',
 	},
+	{
+		id: 49,
+		name: 'Справочник кодов полномочий',
+		date: '2022-08-03',
+		client: 'web-client',
+		field: 'справочник',
+		descr: 'Справочник кодов полномочий для МЧД (машино-читаемых доверенностей)',
+		url: 'https://polnomoch.vercel.app/#/power',
+		tags: ['web-client'],
+		tugs: ['справочник'],
+		latest: false,
+		pic: 'polnomoch',
+	},
 ]
 
 export { tags, tags1, columns, rows }
