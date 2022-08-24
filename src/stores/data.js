@@ -16,6 +16,7 @@ const tags1 = [
 	{ id: 8, selected: false, label: 'dashboard' },
 	{ id: 9, selected: false, label: 'тп' },
 	{ id: 10, selected: false, label: 'сервис' },
+	{ id: 11, selected: false, label: 'документация' },
 ]
 
 const columns = [
@@ -676,6 +677,19 @@ const rows = [
 		tugs: ['справочник'],
 		latest: false,
 		pic: 'polnomoch',
+	},
+	{
+		id: 50,
+		name: 'Документация DV',
+		date: '2022-08-24',
+		client: 'web-client',
+		field: 'документация',
+		descr: 'Страница что нового в версии. Документация ДВ.',
+		url: 'https://dvdoc.vercel.app/#/',
+		tags: ['web-client'],
+		tugs: ['документация'],
+		latest: false,
+		pic: 'dvdoc',
 	},
 ]
 
