@@ -139,7 +139,10 @@ const next = () => {
 			width: 24%;
 		}
 		.center {
-			width: 50%;
+			width: 220px;
+			height: 220px;
+			border-radius: 10px;
+			align-self: center;
 			a {
 				height: 100%;
 				width: 100%;
