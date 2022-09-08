@@ -17,6 +17,7 @@ const tags1 = [
 	{ id: 9, selected: false, label: 'тп' },
 	{ id: 10, selected: false, label: 'сервис' },
 	{ id: 11, selected: false, label: 'документация' },
+	{ id: 12, selected: false, label: 'настройки' },
 ]
 
 const columns = [
@@ -690,6 +691,19 @@ const rows = [
 		tugs: ['документация'],
 		latest: false,
 		pic: 'dvdoc',
+	},
+	{
+		id: 51,
+		name: 'Конфигуратор DV',
+		date: '2022-09-08',
+		client: 'admin',
+		field: 'настройки',
+		descr: 'Конфигуратор docsvision. Первичные настройки при установке и обновлении.',
+		url: 'https://configurator-rouge.vercel.app/#/',
+		tags: ['admin'],
+		tugs: ['настройки'],
+		latest: false,
+		pic: 'configurator',
 	},
 ]
 
