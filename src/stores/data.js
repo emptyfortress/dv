@@ -705,6 +705,19 @@ const rows = [
 		latest: false,
 		pic: 'configurator',
 	},
+	{
+		id: 52,
+		name: 'Главная стр ГНС',
+		date: '2022-09-15',
+		client: 'web-client',
+		field: 'дашборд',
+		descr: 'Помощь в дизайне главной стр Газпром Нефтехим Салават',
+		url: 'https://salavat.vercel.app/#/',
+		tags: ['web-client'],
+		tugs: ['dashboard'],
+		latest: false,
+		pic: 'salavat',
+	},
 ]
 
 export { tags, tags1, columns, rows }
