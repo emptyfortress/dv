@@ -718,6 +718,19 @@ const rows = [
 		latest: false,
 		pic: 'salavat',
 	},
+	{
+		id: 53,
+		name: 'Гипотеза В.Степанова',
+		date: '2022-10-13',
+		client: 'web-client',
+		field: 'грид',
+		descr: 'Быстрая загрузка грида в папке, если сохранять последний параметрический запрос',
+		url: 'https://polnomoch-git-folder-emptyfortress.vercel.app/#/',
+		tags: ['web-client'],
+		tugs: ['грид'],
+		latest: false,
+		pic: 'stepanov',
+	},
 ]
 
 export { tags, tags1, columns, rows }
