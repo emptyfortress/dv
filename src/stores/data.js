@@ -731,6 +731,19 @@ const rows = [
 		latest: false,
 		pic: 'stepanov',
 	},
+	{
+		id: 54,
+		name: 'Настройки консоли управления',
+		date: '2022-11-03',
+		client: 'admin',
+		field: 'настройки',
+		descr: 'Страница настроек консоли управления админки',
+		url: 'https://adminconsole-ruby.vercel.app/#/setup',
+		tags: ['admin'],
+		tugs: ['настройки'],
+		latest: false,
+		pic: 'adminsetup',
+	},
 ]
 
 export { tags, tags1, columns, rows }
