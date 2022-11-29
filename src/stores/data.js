@@ -744,6 +744,19 @@ const rows = [
 		latest: false,
 		pic: 'adminsetup',
 	},
+	{
+		id: 55,
+		name: 'Личный кабинет',
+		date: '2022-11-29',
+		client: 'web-client',
+		field: 'кэдо',
+		descr: 'Страница личного кабинета для КЭДО',
+		url: 'https://base-git-cabinet-emptyfortress.vercel.app/#/cabinet',
+		tags: ['web-client'],
+		tugs: ['кэдо'],
+		latest: false,
+		pic: 'kedo',
+	},
 ]
 
 export { tags, tags1, columns, rows }

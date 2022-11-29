@@ -20,5 +20,9 @@ export const router = createRouter({
 			component: Home,
 			meta: { transition: 'slide-left', title: 'DV prototypes', requiresAuth: false },
 		},
+		{
+			path: '/:pathMatch(.*)*',
+			redirect: '/',
+		},
 	],
 })
