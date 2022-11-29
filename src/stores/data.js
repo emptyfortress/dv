@@ -18,6 +18,7 @@ const tags1 = [
 	{ id: 10, selected: false, label: 'сервис' },
 	{ id: 11, selected: false, label: 'документация' },
 	{ id: 12, selected: false, label: 'настройки' },
+	{ id: 13, selected: false, label: 'кэдо' },
 ]
 
 const columns = [
