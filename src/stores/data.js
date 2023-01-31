@@ -758,6 +758,19 @@ const rows = [
 		latest: false,
 		pic: 'kedo',
 	},
+	{
+		id: 56,
+		name: 'Настройки консоли управления',
+		date: '2023-01-31',
+		client: 'admin',
+		field: 'настройки',
+		descr: 'Страница настроек консоли управления админки',
+		url: 'https://adminconsole-git-tigran-emptyfortress.vercel.app/#/setup/dvserver1',
+		tags: ['admin'],
+		tugs: ['настройки'],
+		latest: true,
+		pic: 'adminsetup',
+	},
 ]
 
 export { tags, tags1, columns, rows }
