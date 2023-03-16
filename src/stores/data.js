@@ -771,6 +771,19 @@ const rows = [
 		latest: true,
 		pic: 'adminsetup',
 	},
+	{
+		id: 57,
+		name: 'Сложные структуры хранения данных',
+		date: '2023-03-16',
+		client: 'концепт',
+		field: 'конструктор',
+		descr: 'Проверка гипотезы Андреева, сложное дерево',
+		url: 'https://likvid.vercel.app/#/',
+		tags: ['концепт'],
+		tugs: ['конструктор'],
+		latest: false,
+		pic: 'complextree',
+	},
 ]
 
 export { tags, tags1, columns, rows }
