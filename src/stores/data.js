@@ -784,6 +784,19 @@ const rows = [
 		latest: false,
 		pic: 'complextree',
 	},
+	{
+		id: 58,
+		name: 'Сервис поисков и представлений',
+		date: '2022-08-22',
+		client: 'web-client',
+		field: 'поиск',
+		descr: 'Настройка представлений для поиска',
+		url: 'https://poisk.vercel.app/#/',
+		tags: ['web-client'],
+		tugs: ['контрол', 'сервис'],
+		latest: true,
+		pic: 'poisk',
+	},
 ]
 
 export { tags, tags1, columns, rows }
