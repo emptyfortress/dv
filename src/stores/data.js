@@ -797,6 +797,19 @@ const rows = [
 		latest: true,
 		pic: 'poisk',
 	},
+	{
+		id: 59,
+		name: 'Документация по css-переменным',
+		date: '2023-10-11',
+		client: 'web-client',
+		field: 'документация',
+		descr: 'Информация по css variables, перевод веб-клиента на переменные',
+		url: 'https://nuxt-css.vercel.app/',
+		tags: ['web-client'],
+		tugs: ['документация', 'css variables'],
+		latest: false,
+		pic: 'variables',
+	},
 ]
 
 export { tags, tags1, columns, rows }
