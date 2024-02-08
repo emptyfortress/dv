@@ -823,6 +823,19 @@ const rows = [
 		latest: false,
 		pic: 'schedule',
 	},
+	{
+		id: 61,
+		name: 'Сервис поисков и представлений новый',
+		date: '2024-08-02',
+		client: 'web-client',
+		field: 'карточка',
+		descr: 'Перенос настроек уведомлений в карточку веб-клиента',
+		url: 'https://poisk-git-select-emptyfortress.vercel.app/#/search',
+		tags: ['web-client'],
+		tugs: ['сервис'],
+		latest: false,
+		pic: 'pip',
+	},
 ]
 
 export { tags, tags1, columns, rows }
