@@ -810,6 +810,19 @@ const rows = [
 		latest: false,
 		pic: 'variables',
 	},
+	{
+		id: 60,
+		name: 'Карточка настроек уведомлений',
+		date: '2024-08-02',
+		client: 'web-client',
+		field: 'карточка',
+		descr: 'Перенос настроек уведомлений в карточку веб-клиента',
+		url: 'https://poisk-git-schedule-emptyfortress.vercel.app/#/schedule',
+		tags: ['web-client'],
+		tugs: ['карточка'],
+		latest: false,
+		pic: 'schedule',
+	},
 ]
 
 export { tags, tags1, columns, rows }
