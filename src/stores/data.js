@@ -836,6 +836,20 @@ const rows = [
 		latest: false,
 		pic: 'pip',
 	},
+	{
+		id: 62,
+		name: 'Цифровой двойник (internet of things)',
+		date: '2023-10-07',
+		client: 'web-client',
+		field: 'концепт',
+		descr:
+			'Система on-line предиктивного анализа работоспособности энергетических объектов  (цифровой двойник)',
+		url: 'https://twin-git-metka-emptyfortress.vercel.app/#/',
+		tags: ['концепт', 'другое'],
+		tugs: ['сервис'],
+		latest: false,
+		pic: 'twin',
+	},
 ]
 
 export { tags, tags1, columns, rows }
