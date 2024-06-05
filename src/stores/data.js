@@ -794,7 +794,7 @@ const rows = [
 		url: 'https://poisk.vercel.app/#/',
 		tags: ['web-client'],
 		tugs: ['контрол', 'сервис'],
-		latest: true,
+		latest: false,
 		pic: 'poisk',
 	},
 	{
@@ -829,11 +829,11 @@ const rows = [
 		date: '2024-08-02',
 		client: 'web-client',
 		field: 'карточка',
-		descr: 'Перенос настроек уведомлений в карточку веб-клиента',
-		url: 'https://poisk-git-select-emptyfortress.vercel.app/#/search',
+		descr: 'Конструктор поисковых запросов',
+		url: 'https://poisk-git-test-emptyfortress-projects.vercel.app/#/',
 		tags: ['web-client'],
 		tugs: ['сервис'],
-		latest: false,
+		latest: true,
 		pic: 'pip',
 	},
 	{
@@ -849,6 +849,19 @@ const rows = [
 		tugs: ['сервис'],
 		latest: false,
 		pic: 'twin',
+	},
+	{
+		id: 63,
+		name: 'Конструктор приложений',
+		date: '2024-6-05',
+		client: 'web-client',
+		field: 'концепт',
+		descr: 'No-code констуктор приложений на основе bpmn',
+		url: 'https://application-git-blocks-emptyfortress-projects.vercel.app/',
+		tags: ['концепт'],
+		tugs: ['конструктор'],
+		latest: true,
+		pic: 'bpmn',
 	},
 ]
 
