@@ -738,7 +738,7 @@ const rows = [
 		date: '2022-11-03',
 		client: 'admin',
 		field: 'настройки',
-		descr: 'Страница настроек консоли управления админки',
+		descr: 'Старая страница настроек консоли управления админки',
 		url: 'https://adminconsole-ruby.vercel.app/#/setup',
 		tags: ['admin'],
 		tugs: ['настройки'],
