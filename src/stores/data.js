@@ -765,7 +765,7 @@ const rows = [
 		client: 'admin',
 		field: 'настройки',
 		descr: 'Страница настроек консоли управления админки',
-		url: 'https://adminconsole-git-tigran-emptyfortress.vercel.app/#/setup/dvserver1',
+		url: 'https://adminka-git-machine-emptyfortress-projects.vercel.app/#/root',
 		tags: ['admin'],
 		tugs: ['настройки'],
 		latest: true,
