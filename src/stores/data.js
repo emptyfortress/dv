@@ -980,6 +980,7 @@ const rows = [
 		latest: false,
 		pic: 'last',
 	},
+
 	{
 		id: 73,
 		name: 'Конструктор приложений',
